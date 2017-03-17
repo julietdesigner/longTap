@@ -7,18 +7,18 @@
 
 ```javascript
 
-	$.fn.longTap = function(fn) {
-		var timeout = undefined;
-		var $this = this;
-		for(var i = 0;i < $this.length; i += 1){
-			$this[i].addEventListener('touchstart', function(event) {
-				timeout = setTimeout(fn, 800); //长按时间超过800ms，则执行传入方法
-			}， false);
-			$this[i].addEventListener('touchend', function(event) {
-				clearTimeout(timeout); //长按事件少于800ms，不会执行传入的方法
-			}, fasle);
-		}
-	};
+$.fn.longTap = function(fn) {
+	var timeout = undefined;
+	var $this = this;
+	for(var i = 0;i < $this.length; i += 1){
+		$this[i].addEventListener('touchstart', function(event) {
+			timeout = setTimeout(fn, 800); //长按时间超过800ms，则执行传入方法
+		}, false);
+		$this[i].addEventListener('touchend', function(event) {
+			clearTimeout(timeout); //长按事件少于800ms，不会执行传入的方法
+		}, false);
+	}
+};
 
 
 ```
@@ -27,8 +27,8 @@
 
 ```javascript
 
-	$('.object').longTap(function(){
-		// do something...
-	});
+$('body').longTap(function(){
+	alert('长按');
+});
 
 ```
